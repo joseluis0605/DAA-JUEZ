@@ -9,7 +9,6 @@ def mejorOpcion(copia):
     copia.remove(mejor)
     return mejor
 def voraz(listaOrdenada, numeroAlmendras, valorNutritivo, valorMaximoPeso):
-
     #solucion (indices)
     solucion=[0]*numeroAlmendras
     copia= copy.deepcopy(listaOrdenada)
