@@ -11,6 +11,7 @@ def profundidad(grafo):
         listado=[]
         if nodo not in visitado:
             recorrido(grafo, visitado, nodo, listado)
+            listado= sorted(listado)
             print(*listado)
 
 def recorrido(grafo, visitado, nodo, listado):
