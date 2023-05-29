@@ -29,6 +29,7 @@ def voraz(listaOrdenada, numeroAlimentos, tamCesta):
             proporcion=(pesoRestante/mejor[1])*mejor[2]
             beneficio= beneficio+proporcion
             solucion.append(mejor)
+    beneficio= beneficio/1.0000000000000
     print(beneficio)
 
 ### main programa ###
