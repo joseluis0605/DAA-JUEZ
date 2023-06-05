@@ -18,6 +18,8 @@ def recorrido(grafo, visitado, nodo, anterior):
     for nodoHijo in grafo[nodo]:
         if nodoHijo not in visitado:
             resultado= recorrido(grafo, visitado, nodoHijo, nodo)
+            if resultado:
+                return resultado
         elif anterior!=nodoHijo:
             return True
     return False
