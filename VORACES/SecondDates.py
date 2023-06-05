@@ -1,47 +1,39 @@
 '''
-SECOND DATES
-algoritmo voraces
+algoritmo voraz
 '''
-import copy
+def voraz(candidatos, numeroParticipantes, grupoMenor):
+    #solucion
+    grupoChico=[]
+    grupoGrande=[]
+
+    #candidatos ordenados
+    candidatos= sorted(candidatos, key= lambda x:x[1])
 
 
-def voraz(listadoOrdenado, tamGrupo, numeroParticipantes):
-    # solucion
-    grupo1=[]
-    grupo2=[]
+    tamGrupoChico= grupoMenor
+    tamGrupoGrande= numeroParticipantes-grupoMenor
 
-    #cogemos el minimo de los dos grupos y es el que empezamos a meter gente primero
-    tamOtroGrupo= numeroParticipantes-tamGrupo
-    primerGrupo= min(tamOtroGrupo, tamGrupo)
+    for i in range(tamGrupoChico):
+        grupoChico.append(candidatos[0][0])
+        candidatos.remove(candidatos[0])
+    for i in range(tamGrupoGrande):
+        grupoGrande.append(candidatos[0][0])
+        candidatos.remove(candidatos[0])
 
-    while len(grupo1)<primerGrupo:
-        valor= listadoOrdenado[0]
-        listadoOrdenado.remove(valor)
-        grupo1.append(valor[0])
+    print(*grupoChico)
+    print(*grupoGrande)
 
-    for i in range(tamOtroGrupo):
-        grupo2.append(listadoOrdenado[0][0])
-        listadoOrdenado.remove(listadoOrdenado[0])
+if __name__=='__main__':
+    primeraLinea= input().split(" ")
+    numeroParticipantes= int(primeraLinea[0])
+    grupoMenor= int(primeraLinea[1])
 
-    print(*grupo1)
-    print(*grupo2)
-
-### main programa ###
-primeraLinea= input().split(" ")
-numeroParticipantes= int(primeraLinea[0])
-tamGrupo= int(primeraLinea[1])
-
-listado=[]
-
-for i in range(numeroParticipantes):
-    trozo=input().split(" ")
-    tupla= (trozo[0], int(trozo[1]))
-    listado.append(tupla)
-
-listadoOrdenado= sorted(listado, key=lambda x: x[1])
-voraz(listadoOrdenado, tamGrupo, numeroParticipantes)
-
-
+    candidatos=[]
+    for i in range(numeroParticipantes):
+        linea= input().split(" ")
+        tupla= (linea[0], int(linea[1]))
+        candidatos.append(tupla)
+    voraz(candidatos, numeroParticipantes, grupoMenor)
 '''
 5 2
 JamesLineberger 55
